@@ -3,14 +3,14 @@
 This project was developed as a part of the Mindsumo Challenge hosted by CapitalOne as a part of the Software Engineering Summit. The project essentially finds 35 most recent posts from Instagram with #capitalone and displays statistics of the media and the associated user. It also performs a sentiment analysis of the caption targeted towards Capital One.
 
 
-# Requirements
+### Requirements
 
   - Python libraries: [httplib2](https://pypi.python.org/pypi/httplib2), [json](https://pypi.python.org/pypi/simplejson/),  [requests](http://docs.python-requests.org/en/latest/user/install/#distribute-pip)
   - Python-Instagram Library that can be found [here](https://github.com/Instagram/python-instagram)
   - An ACCESS_TOKEN from [Instagram](https://instagram.com/developer/) to read media and user statistics. 
   - An ACCESS_TOKEN from [AlchemyAPI](www.alchemyapi.com) to generate sentiment analysis.
 
-# Usage
+### Usage
  - Once you have the access tokens, open insta.py and replace the values in following variables with your own values.
 `
 ``` sh 
@@ -27,7 +27,7 @@ $ python insta.py
 ``` 
  - If everything went well, then you should be able see the list of posts followed by the user statistics.
  
-# Visual Representation (Optional Deliverable)
+### Visual Representation (Optional Deliverable)
    - I tried to create a visual representation of User data, using third-party libraries and modifying it for our purpose. The contents of the Visual Representation are located in the ''Display'' directory. 
  ```sh
     $ cd Display
@@ -48,19 +48,15 @@ $ python insta.py
  - This will open the webpage in your default Web Browser.
  
 
-# Future Plans
+### Future Plans
 
  - Future plans for the project include, creating a visual representation for the statistics of top 30 users who used #capitalone in their posts.
  
 
-# Version
+### Version
 1.0
 
-# Contact
+### Contact
  - Darpan Shah
  - Email: dshah22@umd.edu
-
-
-
-
 
