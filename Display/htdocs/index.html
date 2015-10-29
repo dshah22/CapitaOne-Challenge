@@ -1,0 +1,169 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Today - IG Stats - capitalone</title>
+        <meta name="description" content="Daily stats for Instagram account capitalone">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icons -->
+        <link rel="icon" href="favicon.png" type="image/png">
+		<link rel="apple-touch-icon" href="touch-icon.png"/>
+
+        <!-- Styles -->
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/main.css">
+		
+		<!-- Scripts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="Chart.min.js"></script>
+    </head>
+    <body>
+		<div class="container">
+			<header>
+				<h1><i class="fa fa-instagram" ></i> IG Stats -
+                    <a href="https://instagram.com/capitalone" target="_blank" >capitalone</a></h1>
+				<nav>
+					<ul>
+						<li class="active"><a href="#">Today</a></li>
+						<li><a href="week.html">Week</a></li>
+						<li><a href="month.html">Month</a></li>
+						<li><a href="year.html">Year</a></li>
+						<li><a href="all.html">All</a></li>
+						<li><a href="follower.html" >Follower</a></li>
+						<li><a href="media.html" >Media</a></li>
+                    </ul>
+				</nav>
+			</header>
+			<div class="content">
+				<h1>Today - data since 28.10.2015</h1>
+				<div class="sub">generated 29.10.2015 17:30:06</div>
+				
+				<div class="row" >
+					<div class="third" >
+						<h2><b>9796</b> Follower</h2>
+						<div class="sub" id="follower_diff"></div>
+					</div>
+					<div class="third" >
+						<h2><b>101</b> Following</h2>
+						<div class="sub" id="following_diff"></div>
+					</div>
+					<div class="third" >
+						<h2><b>187</b> Posts</h2>
+						<div class="sub" id="post_diff"></div>
+					</div>
+				</div>
+                <script>
+                    $(document).ready( function() {
+                      $("#follower_diff:contains('-')").addClass('bad');
+                      $("#follower_diff:contains('+')").addClass('good');
+
+                      $("#following_diff:contains('-')").addClass('bad');
+                      $("#following_diff:contains('+')").addClass('good');
+
+                      $("#post_diff:contains('-')").addClass('bad');
+                      $("#post_diff:contains('+')").addClass('good');
+                    });
+                </script>
+				
+				
+				<div class="row">
+					<div class="half">
+						<h3><i class="fa fa-user-plus good" ></i> New follower (0)</h3>
+						<table class="t-full" >
+							
+							
+							</tr>
+						</table>
+					</div>
+					<div class="half">
+						<h3><i class="fa fa-user-times bad" ></i> Lost follower (0)</h3>
+						<table class="t-full" >
+							
+							
+							</tr>
+						</table>
+					</div>
+				</div>
+				
+				<div class="row" >
+					<div class="half">
+						<h3><i class="fa fa-heart-o" ></i> People who liked the most</h3>
+						<table class="t-full" >
+							
+							
+							</tr>
+						</table>
+					</div>
+					<div class="half">
+						<h3><i class="fa fa-comment-o" ></i> People who commented the most</h3>
+						<table class="t-full" >
+							
+							
+							</tr>
+						</table>
+					</div>
+				</div>
+				
+				<div class="row" >
+					<div class="half" >
+						<h3><i class="fa fa-heart-o" ></i> Most liked post</h3>
+						<table class="t-full" >
+							<tr class="no-border"><td><a href="#" target="_blank" >
+                                <img src="nopic.jpg" width="200" /></a></td>
+							<td>
+								&nbsp;<i class="fa fa-heart-o" ></i> 0 likes <br />
+								&nbsp;<i class="fa fa-comment-o" ></i> 0 comments <br />
+								&nbsp;<i class="fa fa-clock-o" ></i> -<br />
+								&nbsp;<i class="fa fa-map-marker" ></i> <br />
+								<p></p>
+							</td></tr>
+						</table>
+					</div>
+					<div class="half" >
+						<h3><i class="fa fa-comment-o" ></i> Most commented post</h3>
+						<table class="t-full" >
+							<tr class="no-border"><td><a href="#" target="_blank" >
+                                <img src="nopic.jpg" width="200" /></a></td>
+							<td>
+								&nbsp;<i class="fa fa-heart-o" ></i> 0 likes <br />
+								&nbsp;<i class="fa fa-comment-o" ></i> 0 comments <br />
+								&nbsp;<i class="fa fa-clock-o" ></i> -<br />
+								&nbsp;<i class="fa fa-map-marker" ></i> <br />
+								<p></p>
+							</td></tr>
+						</table>
+					</div>
+				</div>
+				
+				<div class="row" >
+					<div class="third" style="word-break: break-all;" >
+						<h3><i class="fa fa-tags" ></i> Most used tags</h3>
+						<table class="t-full">
+							
+						</table>
+					</div>
+					<div class="third" >
+						<h3><i class="fa fa-film" ></i> Most used filters</h3>
+						<table class="t-full" >
+							
+							
+							</tr>
+						</table>
+					</div>
+					<div class="third" >
+						<h3><i class="fa fa-pencil-square-o" ></i> Changed usernames</h3>
+						<table class="t-full">
+							
+						</table>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+    </body>
+</html>

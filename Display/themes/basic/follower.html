@@ -1,0 +1,177 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{{title}}</title>
+        <meta name="description" content="{{description}}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icons -->
+        <link rel="icon" href="favicon.png" type="image/png">
+		<link rel="apple-touch-icon" href="touch-icon.png"/>
+
+        <!-- Styles -->
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/main.css">
+		
+		<!-- Scripts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="Chart.min.js"></script>
+    </head>
+    <body>
+		<div class="container">
+			<header>
+				<h1><i class="fa fa-instagram" ></i> IG Stats -
+                    <a href="https://instagram.com/{{u_username}}" target="_blank" >{{u_username}}</a></h1>
+				<nav>
+					<ul>
+						<li><a href="index.html">Today</a></li>
+						<li><a href="week.html">Week</a></li>
+						<li><a href="month.html">Month</a></li>
+						<li><a href="year.html">Year</a></li>
+						<li><a href="all.html">All</a></li>
+						<li class="active"><a href="#" >Follower</a></li>
+						<li><a href="media.html" >Media</a></li>
+				</nav>
+			</header>
+			<div class="content">
+				<h1>Follower stats</h1>
+				<div class="sub">generated {{gentime}}</div>
+				
+				<div class="row" >
+					<div class="third" >
+						<h2>Ø <b>{{follower_avg}}</b> Follower</h2>
+						<div class="sub">{{follower_min}} - {{follower_max}}</div>
+						<div class="sub">{{follower_sum}} total</div>
+					</div>
+					<div class="third" >
+						<h2>Ø <b>{{following_avg}}</b> Following</h2>
+						<div class="sub">{{following_min}} - {{following_max}}</div>
+						<div class="sub">{{following_sum}} total</div>
+					</div>
+					<div class="third" >
+						<h2>Ø <b>{{media_avg}}</b> Posts</h2>
+						<div class="sub">{{media_min}} - {{media_max}}</div>
+						<div class="sub">{{media_sum}} total</div>
+					</div>
+				</div>
+				
+				<div class="row" >
+					<div class="third" >
+						<h3>Most follower</h3>
+						<table class="t-full">
+							{% for item in most_follower %}
+								<tr><td><img src="{{item[0]}}" width="32" />
+                                    <a href="https://instagram.com/{{item[1]}}" target="_blank" >{{item[1]}}
+                                        ({{item[2]}})</a></td></tr>
+							{% endfor %}
+						</table>
+					</div>
+					<div class="third" >
+						<h3>Most following</h3>
+						<table class="t-full">
+							{% for item in most_following %}
+								<tr><td><img src="{{item[0]}}" width="32" />
+                                    <a href="https://instagram.com/{{item[1]}}" target="_blank" >{{item[1]}}
+                                        ({{item[2]}})</a></td></tr>
+							{% endfor %}
+						</table>
+					</div>
+					<div class="third" >
+						<h3>Most posts</h3>
+						<table class="t-full">
+							{% for item in most_media %}
+								<tr><td><img src="{{item[0]}}" width="32" />
+                                    <a href="https://instagram.com/{{item[1]}}" target="_blank" >{{item[1]}}
+                                        ({{item[2]}})</a></td></tr>
+							{% endfor %}
+						</table>
+					</div>
+				</div>
+				
+				<div class="row" >
+					<div class="third" >
+						<h2><b>{{follow_each_other}}</b> Follower</h2>
+						<div class="sub">are also followed by you</div>
+					</div>
+					<div class="third" >
+						<h2><b>{{follow_you_only}}</b> Follower</h2>
+						<div class="sub">following you, but you don't them</div>
+					</div>
+					<div class="third" >
+						<h2><b>{{follow_them_only}}</b> Following</h2>
+						<div class="sub">but they don't follow you</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="half">
+						<h3>People who follow you, but you not them</h3>
+						<table class="t-full" >
+							{% set count = 1 %}
+							{% for item in follow_you_list %}
+								{% if count is odd %} <tr> {% endif %}
+								<td><img src="{{item[0]}}" width="32" />
+                                    <a href="https://instagram.com/{{item[1]}}" target="_blank" >{{item[1]}}</a></td>
+								{% if count is even %} </tr><tr> {% endif %}
+								{% set count = count + 1 %}
+							{% endfor %}
+							</tr>
+						</table>
+					</div>
+					<div class="half">
+						<h3>People you could follow because they like your posts</h3>
+						<table class="t-full" >
+							{% set count = 1 %}
+							{% for item in like_not_following %}
+								{% if count is odd %} <tr> {% endif %}
+								<td><a href="https://instagram.com/{{item[1]}}" target="_blank" >{{item[1]}}
+                                    ({{item[2]}} <i class="fa fa-heart-o" /></i>)</a></td>
+								{% if count is even %} </tr><tr> {% endif %}
+								{% set count = count + 1 %}
+							{% endfor %}
+							</tr>
+						</table>
+					</div>
+				</div>
+				
+				<div class="row" >
+					<div class="half" >
+						<h3>People you follow but who don't like much</h3>
+						<table class="t-full" >
+							{% set count = 1 %}
+							{% for item in following_not_liking %}
+								{% if count is odd %} <tr> {% endif %}
+								<td><img src="{{item[2]}}" width="32" />
+                                    <a href="https://instagram.com/{{item[1]}}" target="_blank" >{{item[1]}}</a></td>
+								{% if count is even %} </tr><tr> {% endif %}
+								{% set count = count + 1 %}
+							{% endfor %}
+							</tr>
+						</table>
+					</div>
+					<div class="half" >
+					    <h3>People who don't follow you anymore ({{not_following_anymore_count}})</h3>
+						<table class="t-full" >
+							{% set count = 1 %}
+							{% for item in not_following_anymore %}
+								{% if count is odd %} <tr> {% endif %}
+								<td><img src="{{item[1]}}" width="32" />
+                                    <a href="https://instagram.com/{{item[0]}}" target="_blank" >{{item[0]}}
+                                    ({{item[2]}})</a></td>
+								{% if count is even %} </tr><tr> {% endif %}
+								{% set count = count + 1 %}
+							{% endfor %}
+							</tr>
+						</table>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+    </body>
+</html>

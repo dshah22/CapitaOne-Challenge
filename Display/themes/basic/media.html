@@ -1,0 +1,270 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{{title}}</title>
+        <meta name="description" content="{{description}}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icons -->
+        <link rel="icon" href="favicon.png" type="image/png">
+		<link rel="apple-touch-icon" href="touch-icon.png"/>
+
+        <!-- Styles -->
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/main.css">
+		
+		<!-- Scripts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="Chart.min.js"></script>
+    </head>
+    <body>
+		<div class="container">
+			<header>
+				<h1><i class="fa fa-instagram" ></i> IG Stats -
+                    <a href="https://instagram.com/{{u_username}}" target="_blank" >{{u_username}}</a></h1>
+				<nav>
+					<ul>
+						<li><a href="index.html">Today</a></li>
+						<li><a href="week.html">Week</a></li>
+						<li><a href="month.html">Month</a></li>
+						<li><a href="year.html">Year</a></li>
+						<li><a href="all.html">All</a></li>
+						<li><a href="follower.html" >Follower</a></li>
+						<li class="active"><a href="#" >Media</a></li>
+                    </ul>
+				</nav>
+			</header>
+			<div class="content">
+				<h1>Media stats</h1>
+				<div class="sub">generated {{gentime}}</div>
+				
+				<div class="row" ><div class="full" >
+                    <h3><i class="fa fa-heart-o" ></i> Most liked posts</h3></div></div>
+				<div class="row" >
+					{% set count = 1 %}
+					{% for item in most_liked %}
+						<div class="half" >
+							<table class="t-full" >
+							<tr class="no-border">
+                            <td><a href="{{item[1]}}" target="_blank" ><img src="{{item[5]}}" width="200" /></a></td>
+							<td>
+								&nbsp;<i class="fa fa-heart-o" ></i> {{item[3]}} likes <br />
+								&nbsp;<i class="fa fa-comment-o" ></i> {{item[4]}} comments <br />
+								&nbsp;<i class="fa fa-clock-o" ></i> {{item[0]}}<br />
+								&nbsp;<i class="fa fa-map-marker" ></i> {{item[2]}}<br />
+								<p>{{item[6]}}</p>
+							</td></tr>
+							</table>
+						</div>
+					{% if count is even %} </div><div class="row" > {% endif %}
+					{% set count = count + 1 %}
+					{% endfor %}
+				</div>
+				
+				<div class="row" ><div class="full" >
+                    <h3><i class="fa fa-comment-o" ></i> Most commented posts</h3></div></div>
+				<div class="row" >
+					{% set count = 1 %}
+					{% for item in most_commented %}
+						<div class="half" >
+							<table class="t-full" >
+							<tr class="no-border">
+                            <td><a href="{{item[1]}}" target="_blank" ><img src="{{item[5]}}" width="200" /></a></td>
+							<td>
+								&nbsp;<i class="fa fa-heart-o" ></i> {{item[3]}} likes <br />
+								&nbsp;<i class="fa fa-comment-o" ></i> {{item[4]}} comments <br />
+								&nbsp;<i class="fa fa-clock-o" ></i> {{item[0]}}<br />
+								&nbsp;<i class="fa fa-map-marker" ></i> {{item[2]}}<br />
+								<p>{{item[6]}}</p>
+							</td></tr>
+						</table>
+						</div>
+						{% if count is even %} </div><div class="row" > {% endif %}
+						{% set count = count + 1 %}
+					{% endfor %}
+				</div>
+				
+				<div class="row">
+					<div class="half" >
+						<h3>Likes by weekday</h3>
+						<table class="t-full" >
+							{% for item in likes_sum_day %}
+								<tr><td>{{item[0]}}</td><td>{{item[1]}}</td></tr>
+							{% endfor %}
+							</tr>
+						</table>
+					</div>
+					<div class="half" >
+						<h3>Chart</h3>
+						<canvas id="like_wd" width="380" height="400"></canvas>
+						<script>
+							var data = {
+								labels: [{% for item in likes_sum_day %}"{{item[0]}}",{% endfor %}],
+								datasets: [
+									{
+										fillColor: "rgba(151,187,205,0.5)",
+										strokeColor: "rgba(151,187,205,0.8)",
+										data: [{% for item in likes_sum_day %}{{item[1]}},{% endfor %}]
+									}
+								]
+							}
+						
+							var ctx = document.getElementById("like_wd").getContext("2d");
+							var myBarChart = new Chart(ctx).Bar(data);
+						</script>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="half" >
+						<h3>Comments by hour</h3>
+						<table class="t-full" >
+                            {% set count = 1 %}
+							{% for item in comments_sum_hour %}
+								{% if count is odd %} <tr> {% endif %}
+								<td>{{item[0]}}:00 - {{item[0]}}:59</td><td>{{item[1]}}</td>
+								{% if count is even %} </tr><tr> {% endif %}
+								{% set count = count + 1 %}
+							{% endfor %}
+							</tr>
+						</table>
+					</div>
+					<div class="half" >
+						<h3>Chart</h3>
+						<canvas id="c_hr" width="380" height="400"></canvas>
+						<script>
+							var data = {
+								labels: [{% for item in comments_sum_hour %}"{{item[0]}}",{% endfor %}],
+								datasets: [
+									{
+										fillColor: "rgba(151,187,205,0.5)",
+										strokeColor: "rgba(151,187,205,0.8)",
+										data: [{% for item in comments_sum_hour %}{{item[1]}},{% endfor %}]
+									}
+								]
+							}
+						
+							var ctx = document.getElementById("c_hr").getContext("2d");
+							var myBarChart = new Chart(ctx).Bar(data);
+						</script>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="half" >
+						<h3>Comments by weekday</h3>
+						<table class="t-full" >
+							{% for item in comments_sum_day %}
+								<tr><td>{{item[0]}}</td><td>{{item[1]}}</td></tr>
+							{% endfor %}
+							</tr>
+						</table>
+					</div>
+					<div class="half" >
+						<h3>Chart</h3>
+						<canvas id="c_d" width="380" height="400"></canvas>
+						<script>
+							var data = {
+								labels: [{% for item in comments_sum_day %}"{{item[0]}}",{% endfor %}],
+								datasets: [
+									{
+										fillColor: "rgba(151,187,205,0.5)",
+										strokeColor: "rgba(151,187,205,0.8)",
+										data: [{% for item in comments_sum_day %}{{item[1]}},{% endfor %}]
+									}
+								]
+							}
+						
+							var ctx = document.getElementById("c_d").getContext("2d");
+							var myBarChart = new Chart(ctx).Bar(data);
+						</script>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="half" >
+						<h3>Posts by hour</h3>
+						<table class="t-full" >
+                            {% set count = 1 %}
+							{% for item in posts_sum_hour %}
+								{% if count is odd %} <tr> {% endif %}
+								<td>{{item[0]}}:00 - {{item[0]}}:59</td><td>{{item[1]}}</td>
+								{% if count is even %} </tr><tr> {% endif %}
+								{% set count = count + 1 %}
+							{% endfor %}
+						</table>
+					</div>
+					<div class="half" >
+						<h3>Chart</h3>
+						<canvas id="p_hr" width="380" height="400"></canvas>
+						<script>
+							var data = {
+								labels: [{% for item in posts_sum_hour %}"{{item[0]}}",{% endfor %}],
+								datasets: [
+									{
+										fillColor: "rgba(151,187,205,0.5)",
+										strokeColor: "rgba(151,187,205,0.8)",
+										data: [{% for item in posts_sum_hour %}{{item[1]}},{% endfor %}]
+									}
+								]
+							}
+						
+							var ctx = document.getElementById("p_hr").getContext("2d");
+							var myBarChart = new Chart(ctx).Bar(data);
+						</script>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="half" >
+						<h3>Posts by weekday</h3>
+						<table class="t-full" >
+							{% for item in posts_sum_day %}
+								<tr><td>{{item[0]}}</td><td>{{item[1]}}</td></tr>
+							{% endfor %}
+							</tr>
+						</table>
+					</div>
+					<div class="half" >
+						<h3>Chart</h3>
+						<canvas id="p_d" width="380" height="400"></canvas>
+						<script>
+							var data = {
+								labels: [{% for item in posts_sum_day %}"{{item[0]}}",{% endfor %}],
+								datasets: [
+									{
+										fillColor: "rgba(151,187,205,0.5)",
+										strokeColor: "rgba(151,187,205,0.8)",
+										data: [{% for item in posts_sum_day %}{{item[1]}},{% endfor %}]
+									}
+								]
+							}
+						
+							var ctx = document.getElementById("p_d").getContext("2d");
+							var myBarChart = new Chart(ctx).Bar(data);
+						</script>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="full" >
+						<h3>Tags</h3>
+						<p>
+							{% for item in tags %}
+							<a href="http://www.gramfeed.com/instagram/tags#{{item[0]}}" target="_blank" >
+                                <b>#{{item[0]}}</b></a> ({{item[1]}}x, last used: {{item[2]}}),&nbsp;&nbsp;
+							{% endfor %}
+							...
+						</p>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+    </body>
+</html>
