@@ -11,13 +11,15 @@ This project was developed as a part of the Mindsumo Challenge hosted by Capital
   - An ACCESS_TOKEN from [AlchemyAPI](www.alchemyapi.com) to generate sentiment analysis.
 
 # Usage
- - Once you have the access tokens, open insta.py and replace the values in following variables with your own values:
-`` 
+ - Once you have the access tokens, open insta.py and replace the values in following variables with your own values.
+`
+``` sh 
 $ client_id = 'XXXXXXXXXXXX'
 $ client_secret = 'XXXXXXXXXXXXX'
 $ access_token = 'XXXXXXXXXXXX'
-$ client_ip = 'XX.XXX.XX.XXX
-```
+$ client_ip = 'XX.XXX.XX.XXX                                                                   
+```  
+
  - Then open 'api_key.txt' file and place your AlchemyAPI API Key in there. Please do not type anything else in it.
  - To run the script just type 
 ``` sh 
