@@ -34,6 +34,7 @@ $ python insta.py
      $ cd Display
  ```
  - Open config.ini file in a text editor of your choice, and insert your ACCESS_TOKEN received from instagram.
+ 
  ``` sh
      access_token = XXXXXXXXXXXXXXXXX
  ```
