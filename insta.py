@@ -38,7 +38,7 @@ api = InstagramAPI(client_id=client_id, client_secret=client_secret, client_ips=
 
 # Using python-Instagram library and retrieving recent posts with tag as 
 # capitalone
-num_posts = 5  # Num of most recent posts to be retrieved
+num_posts = 35  # Num of most recent posts to be retrieved
 tagged_media, next_ = api.tag_recent_media(num_posts,0,'capitalone')
 count = 1
 for media in tagged_media:
