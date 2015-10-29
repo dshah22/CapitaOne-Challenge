@@ -12,7 +12,7 @@ This project was developed as a part of the Mindsumo Challenge hosted by Capital
 
 # Usage
  - Once you have the access tokens, open insta.py and replace the values in following variables with your own values:
- `` sh
+`` 
 $ client_id = 'XXXXXXXXXXXX'
 $ client_secret = 'XXXXXXXXXXXXX'
 $ access_token = 'XXXXXXXXXXXX'
