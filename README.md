@@ -29,10 +29,12 @@ $ python insta.py
  
 ### Visual Representation (Optional Deliverable)
    - I tried to create a visual representation of User data, using third-party libraries and modifying it for our purpose. The contents of the Visual Representation are located in the ''Display'' directory. 
- ```sh
-    $ cd Display
-```
+ 
+``` sh
+     $ cd Display
+ ```
  - Open config.ini file in a text editor of your choice, and insert your ACCESS_TOKEN received from instagram.
+ 
  ``` sh
      access_token = XXXXXXXXXXXXXXXXX
  ```
