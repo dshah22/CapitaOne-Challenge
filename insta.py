@@ -32,6 +32,12 @@ access_token = 'XXXXXXXXXXXXXXXXXXXXXXXXXXX'
 access_token2 = 'access_token=' + access_token
 client_ip = 'XX.XXX.XX.XXX'
 
+#Defining some Colors
+GREEN = '\033[92m'
+ENDCOLOR = '\033[0m'
+RED = '\033[91m'
+YELLOW = '\033[93m'
+MAGENTA = '\033[95m'
 
 alchemyapi = AlchemyAPI()
 api = InstagramAPI(client_id=client_id, client_secret=client_secret, client_ips= client_ip,access_token= access_token) 
@@ -42,7 +48,7 @@ num_posts = 5  # Num of most recent posts to be retrieved
 tagged_media, next_ = api.tag_recent_media(num_posts,0,'capitalone')
 count = 1
 for media in tagged_media:
-   print '\n','Post',count
+   print '\n',RED+'Post'+ENDCOLOR, count
    count +=1
    ''' Trying to do sentiment analysis of the image, but as the Instagram database 
     is secure, we do not get access to the private https: URLs
@@ -58,7 +64,7 @@ for media in tagged_media:
    name = api.user(media.user.id)
    print name
    if hasattr(media, 'caption'): 
-             print "Caption", media.caption.text
+	     print YELLOW+"Caption :"+ENDCOLOR, media.caption.text
 
 	     response = alchemyapi.sentiment_targeted('text', media.caption.text, 
 	     'capital')
@@ -73,15 +79,15 @@ for media in tagged_media:
 			response['statusInfo'])
  
 
+
    # Printing Media and User Statistics: Media Likes, User Details include 
    # Number of Followers
    # Number of Users Following
    # Total number of User Posts
-   print "Total Media Likes: ", media.like_count
+   print MAGENTA + "Total Media Likes: "+ ENDCOLOR,media.like_count
    
    # Making a JSON GET request and parsing the JSON accordingly
    resp = requests.get('https://api.instagram.com/v1/users/'+ name.id +'/',params=access_token2)
-   
-   print 'Total posts: ',resp.json()['data']['counts']['media']
-   print 'Followed By: ', resp.json()['data']['counts']['followed_by']     
-   print 'Follows: ', resp.json()['data']['counts']['follows']
+   print MAGENTA + 'User\'s Total posts: '+ENDCOLOR,resp.json()['data']['counts']['media']
+   print MAGENTA +'User Followed By: '+ENDCOLOR,resp.json()['data']['counts']['followed_by']
+   print MAGENTA +'User Follows: '+ENDCOLOR, resp.json()['data']['counts']['follows']
