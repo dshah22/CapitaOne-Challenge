@@ -33,10 +33,7 @@
         <h1>
 <a id="capitalone---mindsumo-challenge" class="anchor" href="#capitalone---mindsumo-challenge" aria-hidden="true"><span class="octicon octicon-link"></span></a>CapitalOne - Mindsumo Challenge</h1>
 
-<h3>
-<a id="author-darpan-shah" class="anchor" href="#author-darpan-shah" aria-hidden="true"><span class="octicon octicon-link"></span></a>Author: Darpan Shah</h3>
-
-<p>This project was developed as a part of the <a href="https://www.mindsumo.com/contests/meerkat-api">Mindsumo Challenge</a> hosted by CapitalOne as a part of the Software Engineering Summit. The project essentially finds 35 most recent posts from Instagram with #capitalone and displays statistics of the media and the associated user. It also performs a sentiment analysis of the caption targeted towards Capital One.</p>
+<p>This project was developed as a part of the Mindsumo Challenge hosted by CapitalOne as a part of the Software Engineering Summit. The project essentially finds 35 most recent posts from Instagram with #capitalone and displays statistics of the media and the associated user. It also performs a sentiment analysis of the caption targeted towards Capital One.</p>
 
 <h3>
 <a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h3>
@@ -47,7 +44,7 @@
 <li>Python-Instagram Library that can be found <a href="https://github.com/Instagram/python-instagram">here</a>
 </li>
 <li>An ACCESS_TOKEN from <a href="https://instagram.com/developer/">Instagram</a> to read media and user statistics. </li>
-<li>An ACCESS_TOKEN from <a href="www.alchemyapi.com">AlchemyAPI</a> to generate sentiment analysis.</li>
+<li>An ACCESS_TOKEN from <a href="http://www.alchemyapi.com">AlchemyAPI</a> to generate sentiment analysis.</li>
 </ul>
 
 <h3>
@@ -78,14 +75,14 @@ $ client_ip = <span class="pl-s"><span class="pl-pds">'</span>XX.XXX.XX.XXX     
 <a id="visual-representation-optional-deliverable" class="anchor" href="#visual-representation-optional-deliverable" aria-hidden="true"><span class="octicon octicon-link"></span></a>Visual Representation (Optional Deliverable)</h3>
 
 <ul>
-<li>I tried to create a visual representation of User data, using third-party libraries and modifying it for our purpose. The contents of the Visual Representation are located in the ''Display'' directory. 
-<code>sh
-  $ cd Display
-</code>
+<li>I tried to create a visual representation of User data, using third-party libraries and modifying it for our purpose. The contents of the Visual Representation are located in the ''Display'' directory. </li>
+</ul>
+
+<div class="highlight highlight-source-shell"><pre>     $ <span class="pl-c1">cd</span> Display</pre></div>
 
 <ul>
-<li>Open config.ini file in a text editor of your choice, and insert your ACCESS_TOKEN received from instagram.</li>
-</ul>
+<li>
+<p>Open config.ini file in a text editor of your choice, and insert your ACCESS_TOKEN received from instagram.</p>
 
 <div class="highlight highlight-source-shell"><pre>   access_token = XXXXXXXXXXXXXXXXX</pre></div>
 
@@ -94,18 +91,14 @@ $ client_ip = <span class="pl-s"><span class="pl-pds">'</span>XX.XXX.XX.XXX     
 </ul>
 
 <div class="highlight highlight-source-shell"><pre>   $ python getIGstat.py</pre></div>
-
-<ul>
-<li>This will create a database of the user mentioned in the username variable of the config.ini file, and then display the statistics of the User's posts, no. of followers, most likes and comments in a timely manner in a HTML coded web page. Sometimes, when the user has large number of followers/posts, we might get an error and will not be able to see the media, as Instagram limits its API calls to 5000 /hour per access token. To view these :</li>
-</ul>
-
-<div class="highlight highlight-source-shell"><pre>   $ <span class="pl-c1">cd</span> htdocs 
-   $ open index.html</pre></div>
-
-<ul>
-<li>This will open the webpage in your default Web Browser.</li>
-</ul>
 </li>
+<li>This will create a database of the user mentioned in the username variable of the config.ini file, and then display the statistics of the User's posts, no. of followers, most likes and comments in a timely manner in a HTML coded web page. Sometimes, when the user has large number of followers/posts, we might get an error and will not be able to see the media, as Instagram limits its API calls to 5000 /hour per access token. To view these :
+<code>sh 
+   $ cd htdocs 
+   $ open index.html
+</code>
+</li>
+<li>This will open the webpage in your default Web Browser.</li>
 </ul>
 
 <h3>
